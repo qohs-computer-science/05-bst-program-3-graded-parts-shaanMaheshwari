@@ -137,6 +137,124 @@ public class BST implements BSTInterface
     }
 
     public boolean delete(Comparable old){
-        return true;
+        if(root == null){
+            return false;
+        } else { 
+            if(old.compareTo(root.getValue()) == 0){
+                deleteRoot(root);
+                return true;
+            } else {
+                if(old.compareTo(root.getValue()) <= 0){
+                    if(root.getLeft() == null){
+                        return false;
+                    } else {
+                        if(old.compareTo(root.getLeft().getValue()) == 0){
+                            deleteSide(root, root.getLeft(), true);
+                            return true;
+                        } else {
+                            return deleteHelper(old, root.getLeft());
+                        }
+                    }
+                } else {
+                    if(root.getRight() == null){
+                        return false;
+                    } else {
+                        if(old.compareTo(root.getRight().getValue()) == 0){
+                            deleteSide(root, root.getRight(), false);
+                            return false;
+                        } else {
+                            return deleteHelper(old, root.getRight());
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    private boolean deleteHelper(Comparable val, TreeNode child){
+        if(val.compareTo(child.getValue()) <= 0){
+            if(child.getLeft() == null){
+                return false;
+            } else {
+                if(val.compareTo(child.getLeft().getValue()) == 0){
+                    deleteSide(child, child.getLeft(), true);
+                    return true;
+                } else {
+                    return deleteHelper(val, child.getLeft());
+                }
+            }
+        } else {
+            if(child.getRight() == null){
+                return false;
+            } else {
+                if(val.compareTo(child.getRight().getValue()) == 0){
+                    deleteSide(child, child.getRight(), true);
+                    return true;
+                } else {
+                    return deleteHelper(val, child.getRight());
+                }
+            }
+        }
+    }
+
+
+    private void deleteSide(TreeNode parent, TreeNode child, boolean isLeft){
+        if(parent.getLeft() == null){
+            if(parent.getRight() == null){
+                if (isLeft == true){
+                    parent.setLeft(null);
+                } else {
+                    parent.setRight(null);
+                }
+            } else {
+                if (isLeft == true) {
+                    parent.setLeft(child.getRight());
+                    child.setRight(null);
+                } else {
+                    parent.setRight(child.getRight());
+                    child.setRight(null);
+                }
+            }
+        } else {
+            if(child.getRight() == null){
+                if (isLeft == true) {
+                    parent.setLeft(child.getRight());
+                    child.setLeft(null);
+                } else {
+                    parent.setRight(child.getRight());
+                    child.setLeft(null);
+                }
+            } else {
+                TreeNode temp = child.getLeft();
+                while(temp.getRight() != null){
+                    temp = temp.getRight();
+                }
+                temp.setRight(child.getRight());
+            }
+        }
+    }
+
+
+    private void deleteRoot(TreeNode root){
+        if(root.getLeft() == null){
+            if(root.getRight() == null){
+                root.setValue(null);
+            } else {
+                root =  root.getRight();
+            }
+        } else {
+            if(root.getRight() == null){
+                root = root.getLeft();
+            } else {
+                TreeNode temp = root.getLeft();
+                while(temp.getRight() != null){
+                    temp = temp.getRight();
+                }
+                temp.setRight(root.getRight());
+
+                root = root.getLeft();
+            }
+        }
     }
 }
