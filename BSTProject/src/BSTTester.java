@@ -28,11 +28,17 @@ public class BSTTester {
 
     System.out.print("In order: ");
     searchTree.printInOrder();
+    System.out.println("");
 
     System.out.print("Pre order: ");
     searchTree.printPreOrder();
+    System.out.println("");
 
     System.out.print("Post order: ");
     searchTree.printPostOrder();
+    System.out.println("");
+
+    System.out.println(searchTree.find("A"));
+    System.out.println(searchTree.find("B"));
   }
 }

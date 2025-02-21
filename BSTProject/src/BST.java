@@ -26,15 +26,15 @@ public class BST implements BSTInterface
     private void addHelper(Comparable val, TreeNode child, TreeNode parent){
         if(child == null){
             if(val.compareTo(parent.getValue()) <= 0){
-                parent.setLeft(new TreeNode(val));
+                parent.setLeft(new TreeNode(val, null, null));
             } else { 
-                parent.setRight(new TreeNode(val));
+                parent.setRight(new TreeNode(val, null, null));
             }
         } else {
-            if(val.compareTo(child.getLeft()) <= 0){
-                addHelper(val, parent.getLeft(), parent);
+            if(val.compareTo(child.getValue()) <= 0){
+                addHelper(val, child.getLeft(), child);
             } else {
-                addHelper(val, parent.getRight(), parent);
+                addHelper(val, child.getRight(), child);
             }
         }
     }
@@ -94,5 +94,49 @@ public class BST implements BSTInterface
         }
     }
 
+    public int size(){
+        return 0;
+    }
 
+    public boolean isEmpty(){
+        return true;
+    }
+
+
+    //find method
+    public boolean find(Comparable toFind){
+        if(root == null){
+            return false;
+        } else {
+            if(toFind.compareTo(root.getValue()) == 0){
+                return true;
+            } else if(toFind.compareTo(root.getValue()) <= 0){
+                return findHelper(toFind, root.getLeft());
+            } else{
+                return findHelper(toFind, root.getRight());
+            }
+        }
+    }
+
+    private boolean findHelper(Comparable val, TreeNode child){
+        if(child == null){
+            return false;
+        } else {
+            if(val.compareTo(child.getValue()) == 0){
+                return true;
+            } else if(val.compareTo(child.getValue()) <= 0){
+                return findHelper(val, child.getLeft());
+            } else {
+                return findHelper(val, child.getRight());
+            }
+        }
+    }
+
+    public boolean replace(Comparable old, Comparable toAdd){
+        return true;
+    }
+
+    public boolean delete(Comparable old){
+        return true;
+    }
 }
