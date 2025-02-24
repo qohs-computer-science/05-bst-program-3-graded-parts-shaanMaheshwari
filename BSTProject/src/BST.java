@@ -3,6 +3,7 @@ import java.lang.Comparable;
 public class BST implements BSTInterface
 {
     private TreeNode root;
+    public int counter;
 
     //main constructor
     public BST(){
@@ -14,6 +15,7 @@ public class BST implements BSTInterface
     public void add(Comparable newVal){
         if(root == null){
             root = new TreeNode(newVal, null, null);
+            counter++;
         } else if(newVal.compareTo(root.getValue()) <= 0){
             addHelper(newVal, root.getLeft(), root);
         } else {
@@ -27,8 +29,10 @@ public class BST implements BSTInterface
         if(child == null){
             if(val.compareTo(parent.getValue()) <= 0){
                 parent.setLeft(new TreeNode(val, null, null));
+                counter++;
             } else { 
                 parent.setRight(new TreeNode(val, null, null));
+                counter++;
             }
         } else {
             if(val.compareTo(child.getValue()) <= 0){
@@ -71,8 +75,8 @@ public class BST implements BSTInterface
     private void preOrderHelper(TreeNode child){
         if(child != null){
             System.out.print(" " + child.getValue());
-            inOrderHelper(child.getLeft());
-            inOrderHelper(child.getRight());
+            preOrderHelper(child.getLeft());
+            preOrderHelper(child.getRight());
         }
     }
 
@@ -88,18 +92,25 @@ public class BST implements BSTInterface
 
     private void postOrderHelper(TreeNode child){
         if(child != null){
-            inOrderHelper(child.getLeft());
-            inOrderHelper(child.getRight());
+            postOrderHelper(child.getLeft());
+            postOrderHelper(child.getRight());
             System.out.print(" " + child.getValue());
         }
     }
 
+
+    //size method
     public int size(){
-        return 0;
+        return counter;
     }
 
+    //check if empty
     public boolean isEmpty(){
-        return true;
+        if(root == null){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
@@ -132,9 +143,18 @@ public class BST implements BSTInterface
         }
     }
 
+
+    //replace method
     public boolean replace(Comparable old, Comparable toAdd){
-        return true;
+        if(find(old) == true){
+            delete(old);
+            add(toAdd);
+            return true;
+        } else {
+            return false;
+        }
     }
+     
 
     public boolean delete(Comparable old){
         if(root == null){

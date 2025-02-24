@@ -38,7 +38,21 @@ public class BSTTester {
     searchTree.printPostOrder();
     System.out.println("");
 
+
+    System.out.print("Found? ");
     System.out.println(searchTree.find("A"));
+
+    System.out.print("Found? ");
     System.out.println(searchTree.find("B"));
+
+    System.out.print("Empty? ");
+    System.out.println(searchTree.isEmpty());
+
+    System.out.println("Size: " + searchTree.size());
+
+    System.out.println("Delete A: " + searchTree.delete("A"));
+    System.out.print("Pre order: ");
+    searchTree.printPreOrder();
+    System.out.println("");
   }
 }
