@@ -12,6 +12,7 @@ public class BSTTester {
 
     BST searchTree = new BST();
 
+
     searchTree.add("O");
     searchTree.add("R");
     searchTree.add("C");
@@ -26,13 +27,16 @@ public class BSTTester {
     searchTree.add("C");
     searchTree.add("E");
 
+
     System.out.print("In order: ");
     searchTree.printInOrder();
     System.out.println("");
 
+
     System.out.print("Pre order: ");
     searchTree.printPreOrder();
     System.out.println("");
+
 
     System.out.print("Post order: ");
     searchTree.printPostOrder();
@@ -42,15 +46,31 @@ public class BSTTester {
     System.out.print("Found? ");
     System.out.println(searchTree.find("A"));
 
+
     System.out.print("Found? ");
     System.out.println(searchTree.find("B"));
+
 
     System.out.print("Empty? ");
     System.out.println(searchTree.isEmpty());
 
+
     System.out.println("Size: " + searchTree.size());
 
+
     System.out.println("Delete A: " + searchTree.delete("A"));
+    System.out.print("Pre order: ");
+    searchTree.printPreOrder();
+    System.out.println("");
+
+
+    System.out.println("Delete O: " + searchTree.delete("O"));
+    System.out.print("Pre order: ");
+    searchTree.printPreOrder();
+    System.out.println("");
+
+
+    System.out.println("Delete R: " + searchTree.delete("R"));
     System.out.print("Pre order: ");
     searchTree.printPreOrder();
     System.out.println("");

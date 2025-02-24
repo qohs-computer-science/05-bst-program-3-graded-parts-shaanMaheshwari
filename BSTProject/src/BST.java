@@ -161,7 +161,7 @@ public class BST implements BSTInterface
             return false;
         } else { 
             if(old.compareTo(root.getValue()) == 0){
-                deleteRoot(root);
+                deleteRoot();
                 return true;
             } else {
                 if(old.compareTo(root.getValue()) <= 0){
@@ -220,8 +220,8 @@ public class BST implements BSTInterface
 
 
     private void deleteSide(TreeNode parent, TreeNode child, boolean isLeft){
-        if(parent.getLeft() == null){
-            if(parent.getRight() == null){
+        if(child.getLeft() == null){
+            if(child.getRight() == null){
                 if (isLeft == true){
                     parent.setLeft(null);
                 } else {
@@ -251,12 +251,19 @@ public class BST implements BSTInterface
                     temp = temp.getRight();
                 }
                 temp.setRight(child.getRight());
+                if(isLeft){
+                    parent.setLeft(child.getLeft());
+                } else {
+                    parent.setRight(child.getLeft());
+                }
+                child.setLeft(null);
+                child.setRight(null);
             }
         }
     }
 
 
-    private void deleteRoot(TreeNode root){
+    private void deleteRoot(){
         if(root.getLeft() == null){
             if(root.getRight() == null){
                 root.setValue(null);
