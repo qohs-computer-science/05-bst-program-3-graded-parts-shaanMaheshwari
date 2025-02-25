@@ -58,21 +58,40 @@ public class BSTTester {
     System.out.println("Size: " + searchTree.size());
 
 
-    System.out.println("Delete A: " + searchTree.delete("A"));
+    System.out.println("Delete O: " + searchTree.delete("O"));
+    System.out.print("In order: ");
+    searchTree.printInOrder();
+    System.out.println("");
     System.out.print("Pre order: ");
     searchTree.printPreOrder();
     System.out.println("");
-
-
-    System.out.println("Delete O: " + searchTree.delete("O"));
-    System.out.print("Pre order: ");
-    searchTree.printPreOrder();
+    System.out.print("Post order: ");
+    searchTree.printPostOrder();
     System.out.println("");
 
 
     System.out.println("Delete R: " + searchTree.delete("R"));
+    System.out.print("In order: ");
+    searchTree.printInOrder();
+    System.out.println("");
     System.out.print("Pre order: ");
     searchTree.printPreOrder();
     System.out.println("");
+    System.out.print("Post order: ");
+    searchTree.printPostOrder();
+    System.out.println("");
+
+
+    System.out.println("Delete A: " + searchTree.delete("A"));
+    System.out.print("In order: ");
+    searchTree.printInOrder();
+    System.out.println("");
+    System.out.print("Pre order: ");
+    searchTree.printPreOrder();
+    System.out.println("");
+    System.out.print("Post order: ");
+    searchTree.printPostOrder();
+    System.out.println("");
+
   }
 }

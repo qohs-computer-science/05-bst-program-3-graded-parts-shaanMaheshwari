@@ -209,7 +209,7 @@ public class BST implements BSTInterface
                 return false;
             } else {
                 if(val.compareTo(child.getRight().getValue()) == 0){
-                    deleteSide(child, child.getRight(), true);
+                    deleteSide(child, child.getRight(), false);
                     return true;
                 } else {
                     return deleteHelper(val, child.getRight());
@@ -266,7 +266,7 @@ public class BST implements BSTInterface
     private void deleteRoot(){
         if(root.getLeft() == null){
             if(root.getRight() == null){
-                root.setValue(null);
+                root = null;
             } else {
                 root =  root.getRight();
             }
