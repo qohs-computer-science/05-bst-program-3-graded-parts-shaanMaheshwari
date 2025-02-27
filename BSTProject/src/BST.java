@@ -8,7 +8,7 @@ public class BST implements BSTInterface
     //main constructor
     public BST(){
         root = null;
-    }
+    }//end constructor
 
 
     //add method
@@ -20,8 +20,8 @@ public class BST implements BSTInterface
             addHelper(newVal, root.getLeft(), root);
         } else {
             addHelper(newVal, root.getRight(), root);
-        }
-    }
+        }//end if else if else
+    }//end method
 
 
     //add helper function
@@ -33,15 +33,15 @@ public class BST implements BSTInterface
             } else { 
                 parent.setRight(new TreeNode(val, null, null));
                 counter++;
-            }
+            }//end if else
         } else {
             if(val.compareTo(child.getValue()) <= 0){
                 addHelper(val, child.getLeft(), child);
             } else {
                 addHelper(val, child.getRight(), child);
-            }
-        }
-    }
+            }//end if else
+        }//end if else
+    }//end helper
 
 
 
@@ -51,16 +51,16 @@ public class BST implements BSTInterface
             inOrderHelper(root.getLeft());
             System.out.print(root.getValue());
             inOrderHelper(root.getRight());
-        }
-    }
+        }//end if
+    }//end method
 
     private void inOrderHelper(TreeNode child){
         if(child != null){
             inOrderHelper(child.getLeft());
             System.out.print(" " + child.getValue());
             inOrderHelper(child.getRight());
-        }
-    }
+        }//end if
+    }//end method
 
 
     //pre order traversal
@@ -69,16 +69,16 @@ public class BST implements BSTInterface
             System.out.print(root.getValue());
             preOrderHelper(root.getLeft());
             preOrderHelper(root.getRight());
-        }
-    }
+        }//end if
+    }//end method
 
     private void preOrderHelper(TreeNode child){
         if(child != null){
             System.out.print(" " + child.getValue());
             preOrderHelper(child.getLeft());
             preOrderHelper(child.getRight());
-        }
-    }
+        }//end if
+    }//end method
 
 
     //post order traversal
@@ -87,22 +87,22 @@ public class BST implements BSTInterface
             postOrderHelper(root.getLeft());
             postOrderHelper(root.getRight());
             System.out.print(root.getValue());
-        }
-    }
+        }//end if
+    }//end method
 
     private void postOrderHelper(TreeNode child){
         if(child != null){
             postOrderHelper(child.getLeft());
             postOrderHelper(child.getRight());
             System.out.print(" " + child.getValue());
-        }
-    }
+        }//end if
+    }//end method
 
 
     //size method
     public int size(){
         return counter;
-    }
+    }//end method
 
     //check if empty
     public boolean isEmpty(){
@@ -110,8 +110,8 @@ public class BST implements BSTInterface
             return true;
         } else {
             return false;
-        }
-    }
+        }//end if else
+    }//end method
 
 
     //find method
@@ -125,9 +125,9 @@ public class BST implements BSTInterface
                 return findHelper(toFind, root.getLeft());
             } else{
                 return findHelper(toFind, root.getRight());
-            }
-        }
-    }
+            }//end if else if ekse
+        }//end if else
+    }//end method
 
     private boolean findHelper(Comparable val, TreeNode child){
         if(child == null){
@@ -139,9 +139,9 @@ public class BST implements BSTInterface
                 return findHelper(val, child.getLeft());
             } else {
                 return findHelper(val, child.getRight());
-            }
-        }
-    }
+            }//end if else if else
+        }//end if else
+    }//end helper
 
 
     //replace method
@@ -152,8 +152,8 @@ public class BST implements BSTInterface
             return true;
         } else {
             return false;
-        }
-    }
+        }//end if else
+    }//end method
      
 
     public boolean delete(Comparable old){
@@ -173,8 +173,8 @@ public class BST implements BSTInterface
                             return true;
                         } else {
                             return deleteHelper(old, root.getLeft());
-                        }
-                    }
+                        }//end if else
+                    }//end if else
                 } else {
                     if(root.getRight() == null){
                         return false;
@@ -184,12 +184,12 @@ public class BST implements BSTInterface
                             return false;
                         } else {
                             return deleteHelper(old, root.getRight());
-                        }
-                    }
-                }
-            }
-        }
-    }
+                        }//end if else
+                    }//end if else
+                }//end if else
+            }//end if else
+        }//end if else
+    }//end method
 
 
     private boolean deleteHelper(Comparable val, TreeNode child){
@@ -202,8 +202,8 @@ public class BST implements BSTInterface
                     return true;
                 } else {
                     return deleteHelper(val, child.getLeft());
-                }
-            }
+                }//end if else
+            }//end if else
         } else {
             if(child.getRight() == null){
                 return false;
@@ -213,10 +213,10 @@ public class BST implements BSTInterface
                     return true;
                 } else {
                     return deleteHelper(val, child.getRight());
-                }
-            }
-        }
-    }
+                }//end if else
+            }//nd if else
+        }//end if else
+    }//end helper #1
 
 
     private void deleteSide(TreeNode parent, TreeNode child, boolean isLeft){
@@ -226,7 +226,7 @@ public class BST implements BSTInterface
                     parent.setLeft(null);
                 } else {
                     parent.setRight(null);
-                }
+                }//end if else
             } else {
                 if (isLeft == true) {
                     parent.setLeft(child.getRight());
@@ -234,8 +234,8 @@ public class BST implements BSTInterface
                 } else {
                     parent.setRight(child.getRight());
                     child.setRight(null);
-                }
-            }
+                }//end if else
+            }//end if else
         } else {
             if(child.getRight() == null){
                 if (isLeft == true) {
@@ -244,23 +244,23 @@ public class BST implements BSTInterface
                 } else {
                     parent.setRight(child.getRight());
                     child.setLeft(null);
-                }
+                }//end if else
             } else {
                 TreeNode temp = child.getLeft();
                 while(temp.getRight() != null){
                     temp = temp.getRight();
-                }
+                }//end while
                 temp.setRight(child.getRight());
                 if(isLeft){
                     parent.setLeft(child.getLeft());
                 } else {
                     parent.setRight(child.getLeft());
-                }
+                }//end if else
                 child.setLeft(null);
                 child.setRight(null);
-            }
-        }
-    }
+            }//end if else
+        }//end if else
+    }//end helper #2
 
 
     private void deleteRoot(){
@@ -269,7 +269,7 @@ public class BST implements BSTInterface
                 root = null;
             } else {
                 root =  root.getRight();
-            }
+            }//end if else
         } else {
             if(root.getRight() == null){
                 root = root.getLeft();
@@ -277,11 +277,11 @@ public class BST implements BSTInterface
                 TreeNode temp = root.getLeft();
                 while(temp.getRight() != null){
                     temp = temp.getRight();
-                }
+                }//end while
                 temp.setRight(root.getRight());
 
                 root = root.getLeft();
-            }
-        }
-    }
-}
+            }//end if else
+        }//end if else
+    }//end helper #3
+}//end class
